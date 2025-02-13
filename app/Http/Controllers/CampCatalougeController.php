@@ -12,9 +12,17 @@ class CampCatalougeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $camp = CampCatalouge::all();
+
+        $onlyTrashed = $request->query("only_trashed");
+
+        if ($onlyTrashed) {
+            $camp = CampCatalouge::onlyTrashed()->get();
+        } else {
+            $camp = CampCatalouge::all();
+        }
+
 
         return response()->json([
             "camp"=> $camp,
@@ -47,7 +55,7 @@ class CampCatalougeController extends Controller
             return response()->json([
                 'message' => 'Added new Entry',
                 'camp' => $camp
-            ]);
+            ], 201);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => 'Not a valid entry',
@@ -111,6 +119,6 @@ class CampCatalougeController extends Controller
     public function destroy(CampCatalouge $camp)
     {
         $camp->delete();
-        return response()->noContent();
+        
     }
 }
