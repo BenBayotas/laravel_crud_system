@@ -121,4 +121,16 @@ class CampCatalougeController extends Controller
         $camp->delete();
         
     }
+
+
+    public function restoreCamp($id) {
+        $camp = CampCatalouge::onlyTrashed()->find($id);
+
+        if (!$camp){
+            return response()->json(['error' => 'No Camp found or deleted'], 404);
+        }
+        $camp->restore();
+        return response()->json(['message' => 'Camp Restored!', 'camp' => $camp]);
+
+    }
 }

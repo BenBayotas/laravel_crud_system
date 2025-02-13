@@ -57,8 +57,19 @@ export const DeleteCamp = async (campId) => {
     }
 };
 
-export const restoreUser = async() => {
-    
+export const restoreCamp = async(campId, useArchivedCamps) => {
+    try {
+      await axios.post(`/api/camp/${campId}/restore`);
+      alert('Camp restored!');
 
-} 
+      if (useArchivedCamps) {
+        useArchivedCamps();
+      }
+      window.location.reload();
+    } catch (error) {
+      alert('Failed to restore camp');
+      console.error('Error restoring camp:', error);
+    }
+
+};
 

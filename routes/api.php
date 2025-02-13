@@ -10,4 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('book', BookController::class);
 Route::apiResource('camp', CampCatalougeController::class);
-
+Route::post('/camp/{id}/restore', [CampCatalougeController::class, 'restoreCamp']);

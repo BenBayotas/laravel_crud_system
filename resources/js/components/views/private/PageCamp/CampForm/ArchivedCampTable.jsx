@@ -1,7 +1,8 @@
 import React, { userState } from "react";
 import { useArchivedCamps } from "./GetArchivedCamps";
 import { useNavigate } from "react-router-dom";
-import { Table } from "antd";
+import { Button, Table } from "antd";
+import { restoreCamp } from "../CampManager";
 
 const ArchivedCampTable = () => {
     const {camp, error } =useArchivedCamps ();
@@ -20,6 +21,7 @@ const ArchivedCampTable = () => {
                         <th>Name</th>
                         <th>Location</th>
                         <th>Ratings</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +30,10 @@ const ArchivedCampTable = () => {
                             <td>{camps.name}</td>
                             <td>{camps.location}</td>
                             <td>{camps.ratings}</td>
+                            <td>
+                            <Button onClick={()=> restoreCamp(camps.id)}>Restore</Button>
 
+                            </td>
                         </tr>
                     ))}
                 </tbody>
