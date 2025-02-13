@@ -12,6 +12,7 @@ import PageCamp from "../views/private/PageCamp/PageCamp";
 
 import AddCampForm from "../views/private/PageCamp/CampForm/AddCampForm";
 import EditCampForm from "../views/private/PageCamp/CampForm/EditCampForm";
+import ArchivedCampTable from "../views/private/PageCamp/CampForm/ArchivedCampTable";
 
 
 
@@ -26,6 +27,7 @@ export default function Routers() {
                 <Route path="/camp" element={<PageCamp/>} />
                 <Route path="/camp/edit/:id" element={<EditCampForm />} />
                 <Route path="/camp/add" element={<AddCampForm />}/>
+                <Route path="/camp/archives" element={<ArchivedCampTable />} />
                 {/* <Route path="/users" element={<PageUsers />} /> 
                 <Route path="/login" element={<PageLogin />} />
                 <Route path="/books" element={<PageBooks />} /> */}

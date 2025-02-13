@@ -8,7 +8,7 @@ export const useArchivedCamps = () => {
     useEffect(() => {
         const fetchCamp = async () => {
             try {
-                const response = await axios.get ("/api/camps?only_trashed=1");
+                const response = await axios.get ("/api/camp?only_trashed=1");
                 console.log("Fetched camps:", response.data);
                 setCamp(response.data.camp || []);
             } catch (error) {
